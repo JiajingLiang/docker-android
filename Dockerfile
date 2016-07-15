@@ -44,11 +44,12 @@ RUN apt-get clean
 ENV JAVA_HOME /usr/lib/jvm/java-${JDK_VERSION}-oracle
 
 # Download android sdk to /opt
-ADD https://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz /opt
+RUN wget https://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
 
 # decompress android sdk file and remove the .tgz file
-RUN tar -xvf android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz -C /opt
+RUN tar -xvzf android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
 RUN rm android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
+RUN mv android-sdk-linux /opt/
 
 # set ANDROID_HOME environment variables
 ENV ANDROID_HOME /opt/android-sdk-linux
