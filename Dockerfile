@@ -36,6 +36,8 @@ RUN apt-get install -y oracle-java${JDK_VERSION}-installer
 
 # Clear apt-get list and temp file to release space
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get autoremove -y
+RUN apt-get clean
 
 # Set JAVA_HOME environment variables
 ENV JAVA_HOME /usr/lib/jvm/java-${JDK_VERSION}-oracle
