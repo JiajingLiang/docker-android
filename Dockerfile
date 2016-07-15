@@ -20,7 +20,7 @@ RUN apt-get update
 
 # Install Oracle JDK 8
 #RUN apt-get install -y oracle-java${JDK_VERSION}-installer
-RUN apt-get install openjdk-${JDK_VERSION}-jdk
+RUN apt-get install -y openjdk-${JDK_VERSION}-jdk
 
 RUN echo $JAVA_HOME
 
