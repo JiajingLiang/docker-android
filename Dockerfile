@@ -13,13 +13,14 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV JDK_VERSION 8
 
 # Add oracle-jdk8 to repositories
-RUN add-apt-repository -y ppa:webupd8team/java
+#RUN add-apt-repository -y ppa:webupd8team/java
 
 # Update the repository sources list
 RUN apt-get update
 
 # Install Oracle JDK 8
-RUN apt-get install -y oracle-java${JDK_VERSION}-installer
+#RUN apt-get install -y oracle-java${JDK_VERSION}-installer
+RUN apt-get install openjdk-${JDK_VERSION}-jdk
 
 RUN echo $JAVA_HOME
 
