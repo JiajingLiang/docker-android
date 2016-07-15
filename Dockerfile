@@ -6,6 +6,9 @@ FROM ubuntu:16.04
 # File Author / Maintainer
 MAINTAINER Jiajing LIANG <Liangjj19901005@gmail.com>
 
+# run in non-interactive mode
+ENV DEBIAN_FRONTEND noninteractive
+
 # Setup environment variables for jdk
 ENV JDK_VERSION 8
 
@@ -16,7 +19,7 @@ RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
 
 # Install Oracle JDK 8
-RUN apt-get install oracle-java8-installer
+RUN apt-get install oracle-java${JDK_VERSION}-installer
 
 RUN echo $JAVA_HOME
 
