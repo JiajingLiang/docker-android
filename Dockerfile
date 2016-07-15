@@ -9,8 +9,9 @@ MAINTAINER Jiajing LIANG <Liangjj19901005@gmail.com>
 # run in non-interactive mode
 ENV DEBIAN_FRONTEND noninteractive
 
-# Setup environment variables for jdk
+# Setup environment variables for jdk, android sdk
 ENV JDK_VERSION 8
+ENV ANDROID_SDK_VERSION "24.4.1"
 
 # Add i386 architecture packages for running 32 bit Android tools
 RUN dpkg --add-architecture i386
@@ -42,3 +43,14 @@ RUN apt-get clean
 # Set JAVA_HOME environment variables
 ENV JAVA_HOME /usr/lib/jvm/java-${JDK_VERSION}-oracle
 
+# Download android sdk to /opt
+ADD https://dl.google.com/android/android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz /opt
+
+# decompress android sdk file and remove the .tgz file
+RUN tar -xvf android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz -C /opt
+RUN rm android-sdk_r${ANDROID_SDK_VERSION}-linux.tgz
+
+# set ANDROID_HOME environment variables
+ENV ANDROID_HOME /opt/android-sdk-linux
+ENV PATH $PATH:$ANDROID_HOME/tools
+ENV PATH $PATH:$ANDROID_HOME/platform-tools
