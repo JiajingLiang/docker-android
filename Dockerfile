@@ -18,7 +18,7 @@ RUN apt-get update
 # Install add-apt-repository
 RUN apt-get install -y software-properties-common
 
-# Add oracle-jdk8 to repositories
+# Add oracle-jdk to repositories
 RUN add-apt-repository ppa:webupd8team/java
 
 # Update the repository sources list
@@ -30,7 +30,7 @@ RUN echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-s
 
 # Install Oracle JDK 8
 RUN apt-get install -y oracle-java${JDK_VERSION}-installer
-#RUN apt-get install -y openjdk-${JDK_VERSION}-jdk
 
-RUN echo $JAVA_HOME
+# Set JAVA_HOME environment variables
+ENV JAVA_HOME /usr/lib/jvm/java-${JDK_VERSION}-oracle
 
