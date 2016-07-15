@@ -12,6 +12,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # Setup environment variables for jdk, android sdk
 ENV JDK_VERSION 8
 ENV ANDROID_SDK_VERSION "24.4.1"
+ENV ANDROID_BUILD_TOOLS_VERSION "23.0.3"
+ENV ANDROID_TARGET_SDK_VERSION "23"
 
 # Add i386 architecture packages for running 32 bit Android tools
 RUN dpkg --add-architecture i386
@@ -55,3 +57,6 @@ RUN mv android-sdk-linux /opt/
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH $PATH:$ANDROID_HOME/tools
 ENV PATH $PATH:$ANDROID_HOME/platform-tools
+
+# Install Android SDK components
+RUN echo y | android update sdk --no-ui --all --filter tools,platform-tools,build-tools-${ANDROID_BUILD_TOOLS_VERSION},android-${ANDROID_TARGET_SDK_VERSION},source-${ANDROID_TARGET_SDK_VERSION},sys-img-x86-addon-google_apis-google-${ANDROID_TARGET_SDK_VERSION},sys-img-armeabi-v7a-addon-google_apis-google-${ANDROID_TARGET_SDK_VERSION},addon-google_apis-google-${ANDROID_TARGET_SDK_VERSION},extra-android-support,extra-android-m2repository,extra-google-m2repository 
