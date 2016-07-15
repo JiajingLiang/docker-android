@@ -12,6 +12,9 @@ ENV DEBIAN_FRONTEND noninteractive
 # Setup environment variables for jdk
 ENV JDK_VERSION 8
 
+# Update the repository sources list
+RUN apt-get update
+
 # Install add-apt-repository
 RUN apt-get install -y software-properties-common
 
