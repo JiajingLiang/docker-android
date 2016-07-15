@@ -24,6 +24,10 @@ RUN add-apt-repository ppa:webupd8team/java
 # Update the repository sources list
 RUN apt-get update
 
+# Accept Oracle license
+RUN echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+RUN echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections
+
 # Install Oracle JDK 8
 RUN apt-get install -y oracle-java${JDK_VERSION}-installer
 #RUN apt-get install -y openjdk-${JDK_VERSION}-jdk
