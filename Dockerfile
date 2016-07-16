@@ -21,8 +21,8 @@ RUN dpkg --add-architecture i386
 # Update the repository sources list
 RUN apt-get update
 
-# Install add-apt-repository, i386 libs (for 32 bit) and mailutils
-RUN apt-get install -y software-properties-common lib32stdc++6 lib32z1 lib32ncurses5 mutt
+# Install add-apt-repository, i386 libs (for 32 bit)
+RUN apt-get install -y software-properties-common libc6-i386 lib32stdc++6 lib32z1 lib32ncurses5 lib32gcc1
 
 # Add oracle-jdk to repositories
 RUN add-apt-repository ppa:webupd8team/java
