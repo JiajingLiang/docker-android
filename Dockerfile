@@ -12,8 +12,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # Setup environment variables for jdk, android sdk
 ENV JDK_VERSION 8
 ENV ANDROID_SDK_VERSION "24.4.1"
-ENV ANDROID_BUILD_TOOLS_VERSION "23.0.3"
-ENV ANDROID_TARGET_SDK_VERSION "23"
+ENV ANDROID_BUILD_TOOLS_VERSION "24.0.1"
+ENV ANDROID_TARGET_SDK_VERSION "24"
 
 # Add i386 architecture packages for running 32 bit Android tools
 RUN dpkg --add-architecture i386
